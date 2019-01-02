@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #main{
+ width: calc(100% - 850px);
+   height:600px;
+    background-color: aqua
+}
+  </style>
+  <!-- ECharts单文件引入 -->
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+</head>
+
+<body>
+  <div id="main"></div>
+  <script>
+    var myChart = echarts.init(document.getElementById('main'));
+    var option = {
+      title: {
+        text: 'demo'
+      },
+      tooltip: {
+        show: true,
+        trigger: 'item'
+      },
+      legend: {},
+      xAxis: {
+        data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+      },
+      yAxis: [{}, {}],
+      series: [{
+        name: '销量',
+        type: 'bar',
+        data: [5, 20, 36, 10, 10, 20]
+      }]
+    };
+    myChart.setOption(option);
+
+  </script>
+</body>
+
+</html>

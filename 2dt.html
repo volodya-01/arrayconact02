@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #main{
+    width: 1000px;
+   height:600px;
+    background-color: aqua
+}
+  </style>
+  <!-- ECharts单文件引入 -->
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+</head>
+
+<body>
+  <div id="main"></div>
+  <script>
+    var worldMapContainer = document.getElementById('main');
+
+    //用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+    var resizeWorldMapContainer = function () {
+      worldMapContainer.style.width = window.innerWidth + 'px';
+      worldMapContainer.style.height = window.innerHeight + 'px';
+    };
+    //设置容器高宽
+    resizeWorldMapContainer();
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(worldMapContainer);
+
+    // 指定图表的配置项和数据
+    var option = {
+      title: {
+        text: 'ECharts 入门示例'
+      },
+      tooltip: {},
+      legend: {
+        data: ['销量'],
+        height: worldMapContainer.style.height,
+        width: worldMapContainer.style.width
+      },
+      xAxis: {
+         data: ["00:00", "4:00", "8:00", "12:00", "16:00", "20:00"]
+      },
+      yAxis: {},
+      series: [{
+        name: '销量',
+        type: 'line',
+        data: [5, 20, 36, 10, 10, 20]
+      }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
+    //用于使chart自适应高度和宽度
+    window.onresize = function () {
+      //重置容器高宽
+      resizeWorldMapContainer();
+      myChart.resize();
+    };
+
+  </script>
+</body>
+
+</html>
